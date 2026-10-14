@@ -1,0 +1,286 @@
+// Generated from cmux-tui/spec/sdk-schema.json. DO NOT EDIT.
+package com.cmux.raw;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+
+public final class IdentifyResult implements WireValue {
+    private final Field<String> buildCommit;
+    private final Field<String> buildId;
+    private final Field<List<String>> capabilities;
+    private final Field<String> cliPath;
+    private final String generation;
+    private final Field<String> ghosttyCommit;
+    private final Field<String> launchSnapshotPath;
+    private final Field<Boolean> lifecycleReady;
+    private final Field<String> machineName;
+    private final long pid;
+    private final long protocol;
+    private final String registryId;
+    private final String session;
+    private final Field<String> sessionId;
+    private final UInt64 terminalRevision;
+    private final String version;
+    private final UInt64 workspaceRevision;
+
+    private IdentifyResult(Builder builder) {
+        this.buildCommit = builder.buildCommit;
+        this.buildId = builder.buildId;
+        this.capabilities = builder.capabilities.map(value -> List.copyOf(value));
+        this.cliPath = builder.cliPath;
+        if (!builder.generationSet) throw new IllegalArgumentException("generation is required");
+        this.generation = Wire.nonNull(builder.generation, "generation");
+        this.ghosttyCommit = builder.ghosttyCommit;
+        this.launchSnapshotPath = builder.launchSnapshotPath;
+        this.lifecycleReady = builder.lifecycleReady;
+        this.machineName = builder.machineName;
+        if (!builder.pidSet) throw new IllegalArgumentException("pid is required");
+        this.pid = builder.pid;
+        if (!builder.protocolSet) throw new IllegalArgumentException("protocol is required");
+        this.protocol = builder.protocol;
+        if (!builder.registryIdSet) throw new IllegalArgumentException("registry_id is required");
+        this.registryId = Wire.nonNull(builder.registryId, "registry_id");
+        if (!builder.sessionSet) throw new IllegalArgumentException("session is required");
+        this.session = Wire.nonNull(builder.session, "session");
+        this.sessionId = builder.sessionId;
+        if (!builder.terminalRevisionSet) throw new IllegalArgumentException("terminal_revision is required");
+        this.terminalRevision = Wire.nonNull(builder.terminalRevision, "terminal_revision");
+        if (!builder.versionSet) throw new IllegalArgumentException("version is required");
+        this.version = Wire.nonNull(builder.version, "version");
+        if (!builder.workspaceRevisionSet) throw new IllegalArgumentException("workspace_revision is required");
+        this.workspaceRevision = Wire.nonNull(builder.workspaceRevision, "workspace_revision");
+    }
+
+    public static Builder builder() { return new Builder(); }
+
+    public String app() { return "cmux-tui"; }
+    public Field<String> buildCommit() { return buildCommit; }
+    public Field<String> buildId() { return buildId; }
+    public Field<List<String>> capabilities() { return capabilities; }
+    public Field<String> cliPath() { return cliPath; }
+    public Long daemonHandoff() { return 1L; }
+    public String generation() { return generation; }
+    public Field<String> ghosttyCommit() { return ghosttyCommit; }
+    public Field<String> launchSnapshotPath() { return launchSnapshotPath; }
+    public Field<Boolean> lifecycleReady() { return lifecycleReady; }
+    public Field<String> machineName() { return machineName; }
+    public long pid() { return pid; }
+    public long protocol() { return protocol; }
+    public String registryId() { return registryId; }
+    public String session() { return session; }
+    public Field<String> sessionId() { return sessionId; }
+    public UInt64 terminalRevision() { return terminalRevision; }
+    public String version() { return version; }
+    public UInt64 workspaceRevision() { return workspaceRevision; }
+
+    public static IdentifyResult fromWire(Object value) {
+        Map<String, Object> object = Wire.object(value, "IdentifyResult");
+        Builder builder = builder();
+        Object rawApp = Wire.required(object, "app");
+        ProtocolSupport.literal(rawApp, "cmux-tui", "IdentifyResult.app");
+        Object rawBuildCommit = Wire.optional(object, "build_commit");
+        if (!Wire.isMissing(rawBuildCommit)) {
+            builder.buildCommit(rawBuildCommit == null ? null : Wire.string(rawBuildCommit, "IdentifyResult.build_commit"));
+        }
+        Object rawBuildId = Wire.optional(object, "build_id");
+        if (!Wire.isMissing(rawBuildId)) {
+            builder.buildId(rawBuildId == null ? null : Wire.string(rawBuildId, "IdentifyResult.build_id"));
+        }
+        Object rawCapabilities = Wire.optional(object, "capabilities");
+        if (!Wire.isMissing(rawCapabilities)) {
+            builder.capabilities(Wire.array(rawCapabilities, "IdentifyResult.capabilities", item -> Wire.string(item, "IdentifyResult.capabilities item")));
+        }
+        Object rawCliPath = Wire.optional(object, "cli_path");
+        if (!Wire.isMissing(rawCliPath)) {
+            builder.cliPath(rawCliPath == null ? null : Wire.string(rawCliPath, "IdentifyResult.cli_path"));
+        }
+        Object rawDaemonHandoff = Wire.required(object, "daemon_handoff");
+        ProtocolSupport.literal(rawDaemonHandoff, 1L, "IdentifyResult.daemon_handoff");
+        Object rawGeneration = Wire.required(object, "generation");
+        builder.generation(Wire.string(rawGeneration, "IdentifyResult.generation"));
+        Object rawGhosttyCommit = Wire.optional(object, "ghostty_commit");
+        if (!Wire.isMissing(rawGhosttyCommit)) {
+            builder.ghosttyCommit(rawGhosttyCommit == null ? null : Wire.string(rawGhosttyCommit, "IdentifyResult.ghostty_commit"));
+        }
+        Object rawLaunchSnapshotPath = Wire.optional(object, "launch_snapshot_path");
+        if (!Wire.isMissing(rawLaunchSnapshotPath)) {
+            builder.launchSnapshotPath(rawLaunchSnapshotPath == null ? null : Wire.string(rawLaunchSnapshotPath, "IdentifyResult.launch_snapshot_path"));
+        }
+        Object rawLifecycleReady = Wire.optional(object, "lifecycle_ready");
+        if (!Wire.isMissing(rawLifecycleReady)) {
+            builder.lifecycleReady(Wire.bool(rawLifecycleReady, "IdentifyResult.lifecycle_ready"));
+        }
+        Object rawMachineName = Wire.optional(object, "machine_name");
+        if (!Wire.isMissing(rawMachineName)) {
+            builder.machineName(Wire.string(rawMachineName, "IdentifyResult.machine_name"));
+        }
+        Object rawPid = Wire.required(object, "pid");
+        builder.pid(Wire.uint32(rawPid, "IdentifyResult.pid"));
+        Object rawProtocol = Wire.required(object, "protocol");
+        builder.protocol(Wire.uint32(rawProtocol, "IdentifyResult.protocol"));
+        Object rawRegistryId = Wire.required(object, "registry_id");
+        builder.registryId(Wire.string(rawRegistryId, "IdentifyResult.registry_id"));
+        Object rawSession = Wire.required(object, "session");
+        builder.session(Wire.string(rawSession, "IdentifyResult.session"));
+        Object rawSessionId = Wire.optional(object, "session_id");
+        if (!Wire.isMissing(rawSessionId)) {
+            builder.sessionId(Wire.string(rawSessionId, "IdentifyResult.session_id"));
+        }
+        Object rawTerminalRevision = Wire.required(object, "terminal_revision");
+        builder.terminalRevision(Wire.uint64(rawTerminalRevision, "IdentifyResult.terminal_revision"));
+        Object rawVersion = Wire.required(object, "version");
+        builder.version(Wire.string(rawVersion, "IdentifyResult.version"));
+        Object rawWorkspaceRevision = Wire.required(object, "workspace_revision");
+        builder.workspaceRevision(Wire.uint64(rawWorkspaceRevision, "IdentifyResult.workspace_revision"));
+        return builder.build();
+    }
+
+    @Override
+    public Map<String, Object> toWire() {
+        LinkedHashMap<String, Object> object = new LinkedHashMap<>();
+        Wire.put(object, "app", "cmux-tui");
+        Wire.put(object, "build_commit", buildCommit);
+        Wire.put(object, "build_id", buildId);
+        Wire.put(object, "capabilities", capabilities);
+        Wire.put(object, "cli_path", cliPath);
+        Wire.put(object, "daemon_handoff", 1L);
+        Wire.put(object, "generation", generation);
+        Wire.put(object, "ghostty_commit", ghosttyCommit);
+        Wire.put(object, "launch_snapshot_path", launchSnapshotPath);
+        Wire.put(object, "lifecycle_ready", lifecycleReady);
+        Wire.put(object, "machine_name", machineName);
+        Wire.put(object, "pid", pid);
+        Wire.put(object, "protocol", protocol);
+        Wire.put(object, "registry_id", registryId);
+        Wire.put(object, "session", session);
+        Wire.put(object, "session_id", sessionId);
+        Wire.put(object, "terminal_revision", terminalRevision);
+        Wire.put(object, "version", version);
+        Wire.put(object, "workspace_revision", workspaceRevision);
+        return Collections.unmodifiableMap(object);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof IdentifyResult that)) return false;
+        return Objects.equals(buildCommit, that.buildCommit) && Objects.equals(buildId, that.buildId) && Objects.equals(capabilities, that.capabilities) && Objects.equals(cliPath, that.cliPath) && Objects.equals(generation, that.generation) && Objects.equals(ghosttyCommit, that.ghosttyCommit) && Objects.equals(launchSnapshotPath, that.launchSnapshotPath) && Objects.equals(lifecycleReady, that.lifecycleReady) && Objects.equals(machineName, that.machineName) && Objects.equals(pid, that.pid) && Objects.equals(protocol, that.protocol) && Objects.equals(registryId, that.registryId) && Objects.equals(session, that.session) && Objects.equals(sessionId, that.sessionId) && Objects.equals(terminalRevision, that.terminalRevision) && Objects.equals(version, that.version) && Objects.equals(workspaceRevision, that.workspaceRevision);
+    }
+
+    @Override
+    public int hashCode() { return Objects.hash(buildCommit, buildId, capabilities, cliPath, generation, ghosttyCommit, launchSnapshotPath, lifecycleReady, machineName, pid, protocol, registryId, session, sessionId, terminalRevision, version, workspaceRevision); }
+
+    @Override
+    public String toString() { return "IdentifyResult" + toWire(); }
+
+    public static final class Builder {
+        private Field<String> buildCommit = Field.omitted();
+        private Field<String> buildId = Field.omitted();
+        private Field<List<String>> capabilities = Field.omitted();
+        private Field<String> cliPath = Field.omitted();
+        private String generation;
+        private boolean generationSet;
+        private Field<String> ghosttyCommit = Field.omitted();
+        private Field<String> launchSnapshotPath = Field.omitted();
+        private Field<Boolean> lifecycleReady = Field.omitted();
+        private Field<String> machineName = Field.omitted();
+        private Long pid;
+        private boolean pidSet;
+        private Long protocol;
+        private boolean protocolSet;
+        private String registryId;
+        private boolean registryIdSet;
+        private String session;
+        private boolean sessionSet;
+        private Field<String> sessionId = Field.omitted();
+        private UInt64 terminalRevision;
+        private boolean terminalRevisionSet;
+        private String version;
+        private boolean versionSet;
+        private UInt64 workspaceRevision;
+        private boolean workspaceRevisionSet;
+
+        public Builder buildCommit(String value) {
+            this.buildCommit = Field.ofNullable(value);
+            return this;
+        }
+        public Builder buildId(String value) {
+            this.buildId = Field.ofNullable(value);
+            return this;
+        }
+        public Builder capabilities(List<String> value) {
+            this.capabilities = Field.of(value);
+            return this;
+        }
+        public Builder cliPath(String value) {
+            this.cliPath = Field.ofNullable(value);
+            return this;
+        }
+        public Builder generation(String value) {
+            this.generation = value;
+            this.generationSet = true;
+            return this;
+        }
+        public Builder ghosttyCommit(String value) {
+            this.ghosttyCommit = Field.ofNullable(value);
+            return this;
+        }
+        public Builder launchSnapshotPath(String value) {
+            this.launchSnapshotPath = Field.ofNullable(value);
+            return this;
+        }
+        public Builder lifecycleReady(Boolean value) {
+            this.lifecycleReady = Field.of(value);
+            return this;
+        }
+        public Builder machineName(String value) {
+            this.machineName = Field.of(value);
+            return this;
+        }
+        public Builder pid(long value) {
+            this.pid = value;
+            this.pidSet = true;
+            return this;
+        }
+        public Builder protocol(long value) {
+            this.protocol = value;
+            this.protocolSet = true;
+            return this;
+        }
+        public Builder registryId(String value) {
+            this.registryId = value;
+            this.registryIdSet = true;
+            return this;
+        }
+        public Builder session(String value) {
+            this.session = value;
+            this.sessionSet = true;
+            return this;
+        }
+        public Builder sessionId(String value) {
+            this.sessionId = Field.of(value);
+            return this;
+        }
+        public Builder terminalRevision(UInt64 value) {
+            this.terminalRevision = value;
+            this.terminalRevisionSet = true;
+            return this;
+        }
+        public Builder version(String value) {
+            this.version = value;
+            this.versionSet = true;
+            return this;
+        }
+        public Builder workspaceRevision(UInt64 value) {
+            this.workspaceRevision = value;
+            this.workspaceRevisionSet = true;
+            return this;
+        }
+        public IdentifyResult build() { return new IdentifyResult(this); }
+    }
+}

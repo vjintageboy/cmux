@@ -1,0 +1,97 @@
+// Generated from cmux-tui/spec/sdk-schema.json. DO NOT EDIT.
+package com.cmux.raw;
+
+
+import java.util.Map;
+
+
+public final class Protocol {
+    public static final String SDK_VERSION = "1.0.0";
+    public static final int VERSION = 12;
+    public static final int SCHEMA_VERSION = 2;
+    public static final String IR_SHA256 = "e81b8aed2fef0fc47f11d3defab497d360a58c8873f6da133e969a98536acf67";
+    private Protocol() {}
+
+    public static ProtocolEvent decodeEvent(Object value) {
+        Map<String, Object> object = Wire.object(value, "event");
+        String event = Wire.string(Wire.required(object, "event"), "event.event");
+        return switch (event) {
+            case "activity-changed" -> ActivityChangedEvent.fromWire(value);
+            case "agent-changed" -> AgentChangedEvent.fromWire(value);
+            case "agent-presence-changed" -> AgentPresenceChangedEvent.fromWire(value);
+            case "bell" -> BellEvent.fromWire(value);
+            case "bookmarks-changed" -> BookmarksChangedEvent.fromWire(value);
+            case "browser-state" -> BrowserStateEvent.fromWire(value);
+            case "client-attached" -> ClientAttachedEvent.fromWire(value);
+            case "client-changed" -> ClientChangedEvent.fromWire(value);
+            case "client-detached" -> ClientDetachedEvent.fromWire(value);
+            case "client-list-invalidated" -> ClientListInvalidatedEvent.fromWire(value);
+            case "cloud-conversation-changed" -> CloudConversationChangedEvent.fromWire(value);
+            case "cloud-conversation-resynced" -> CloudConversationResyncedEvent.fromWire(value);
+            case "cloud-inbox-changed" -> CloudInboxChangedEvent.fromWire(value);
+            case "cloud-inbox-reset" -> CloudInboxResetEvent.fromWire(value);
+            case "cloud-mux-resynced" -> CloudMuxResyncedEvent.fromWire(value);
+            case "cloud-mux-wake" -> CloudMuxWakeEvent.fromWire(value);
+            case "cloud-session-needed" -> CloudSessionNeededEvent.fromWire(value);
+            case "cloud-subscription-state" -> CloudSubscriptionStateEvent.fromWire(value);
+            case "colors-changed" -> ColorsChangedEvent.fromWire(value);
+            case "config-reload-requested" -> ConfigReloadRequestedEvent.fromWire(value);
+            case "conversation-changed" -> ConversationChangedEvent.fromWire(value);
+            case "conversation-draft" -> ConversationDraftEvent.fromWire(value);
+            case "conversation-typing" -> ConversationTypingEvent.fromWire(value);
+            case "daemon-shutdown" -> DaemonShutdownEvent.fromWire(value);
+            case "detached" -> DetachedEvent.fromWire(value);
+            case "empty" -> EmptyEvent.fromWire(value);
+            case "frame" -> FrameEvent.fromWire(value);
+            case "frontend-projection-changed" -> FrontendProjectionChangedEvent.fromWire(value);
+            case "graphics-status" -> GraphicsStatusEvent.fromWire(value);
+            case "history-changed" -> HistoryChangedEvent.fromWire(value);
+            case "keybindings-changed" -> KeybindingsChangedEvent.fromWire(value);
+            case "layout-changed" -> LayoutChangedEvent.fromWire(value);
+            case "machine-usage-changed" -> MachineUsageChangedEvent.fromWire(value);
+            case "notification" -> NotificationEvent.fromWire(value);
+            case "output" -> OutputEvent.fromWire(value);
+            case "overflow" -> OverflowEvent.fromWire(value);
+            case "pairing-requested" -> PairingRequestedEvent.fromWire(value);
+            case "pairing-resolved" -> PairingResolvedEvent.fromWire(value);
+            case "pane-added" -> PaneAddedEvent.fromWire(value);
+            case "pane-closed" -> PaneClosedEvent.fromWire(value);
+            case "personal-changed" -> PersonalChangedEvent.fromWire(value);
+            case "program-status-changed" -> ProgramStatusChangedEvent.fromWire(value);
+            case "render-delta" -> RenderDeltaEvent.fromWire(value);
+            case "render-state" -> RenderStateEvent.fromWire(value);
+            case "resized" -> ResizedEvent.fromWire(value);
+            case "screen-added" -> ScreenAddedEvent.fromWire(value);
+            case "screen-changed" -> ScreenChangedEvent.fromWire(value);
+            case "screen-closed" -> ScreenClosedEvent.fromWire(value);
+            case "screen-renamed" -> ScreenRenamedEvent.fromWire(value);
+            case "scroll-changed" -> ScrollChangedEvent.fromWire(value);
+            case "settings-changed" -> SettingsChangedEvent.fromWire(value);
+            case "size-state" -> SizeStateEvent.fromWire(value);
+            case "status" -> StatusEvent.fromWire(value);
+            case "surface-exited" -> SurfaceExitedEvent.fromWire(value);
+            case "surface-output" -> SurfaceOutputEvent.fromWire(value);
+            case "surface-resize-failed" -> SurfaceResizeFailedEvent.fromWire(value);
+            case "surface-resized" -> SurfaceResizedEvent.fromWire(value);
+            case "tab-added" -> TabAddedEvent.fromWire(value);
+            case "tab-changed" -> TabChangedEvent.fromWire(value);
+            case "tab-closed" -> TabClosedEvent.fromWire(value);
+            case "tab-renamed" -> TabRenamedEvent.fromWire(value);
+            case "terminal-clipboard-read" -> TerminalClipboardReadEvent.fromWire(value);
+            case "terminal-clipboard-read-cancelled" -> TerminalClipboardReadCancelledEvent.fromWire(value);
+            case "terminal-reaped" -> TerminalReapedEvent.fromWire(value);
+            case "terminal-registry-changed" -> TerminalRegistryChangedEvent.fromWire(value);
+            case "title-changed" -> TitleChangedEvent.fromWire(value);
+            case "tree-changed" -> TreeChangedEvent.fromWire(value);
+            case "url-open" -> UrlOpenEvent.fromWire(value);
+            case "vt-state" -> VtStateEvent.fromWire(value);
+            case "window-title-requested" -> WindowTitleRequestedEvent.fromWire(value);
+            case "workspace-added" -> WorkspaceAddedEvent.fromWire(value);
+            case "workspace-changed" -> WorkspaceChangedEvent.fromWire(value);
+            case "workspace-closed" -> WorkspaceClosedEvent.fromWire(value);
+            case "workspace-moved" -> WorkspaceMovedEvent.fromWire(value);
+            case "workspace-renamed" -> WorkspaceRenamedEvent.fromWire(value);
+            default -> UnknownEvent.fromWire(value);
+        };
+    }
+}
